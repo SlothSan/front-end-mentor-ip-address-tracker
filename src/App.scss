@@ -1,0 +1,106 @@
+@import 'Components/SharedStyling/SharedStyling';
+
+.header-container {
+  width: 100%;
+  height: 300px;
+  background-image: url("Assets/imgs/pattern-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: -20px;
+  z-index: 2;
+
+  .header-title {
+    padding: 40px 0;
+    line-height: 30px;
+    font-weight: 500;
+    font-size: 1.625rem;
+    color: $text-white;
+    margin: 0 auto;
+  }
+
+  .form-search {
+    width: 327px;
+    height: 58px;
+    display: flex;
+    margin: 0 auto;
+
+    .input-search {
+      width: 327px;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      font-size: 1.125rem;
+      border: none;
+      color: $very-dark-gray;
+      padding: 0 15px;
+    }
+
+    .input-search:focus {
+      outline: none;
+    }
+
+    .button-search {
+      border: none;
+      height: 58px;
+      width: 58px;
+      background-color: $background-black;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      transition: all 0.2s;
+    }
+
+    .button-search:hover {
+      background-color: $very-dark-gray;
+      transition: all 0.2s;
+    }
+  }
+
+  .information-container {
+    margin: 195px auto 0 auto;
+    width: 327px;
+    height: 294px;
+    background-color: $text-white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    .infotext-container {
+      width: 279px;
+      height: 43px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .infotext-header {
+      font-weight: 700;
+      letter-spacing: 1.46px;
+      font-size: 0.625rem;
+      color: $dark-gray;
+    }
+
+    .infotext {
+      line-height: 24px;
+      letter-spacing: -0.18px;
+      font-size: 1.125rem;
+      color: $very-dark-gray;
+    }
+  }
+}
+
+.map {
+  width: 100%;
+  height: 551px;
+  z-index: 1;
+}
+
