@@ -2,6 +2,7 @@ import {MapContainer, Marker, Popup, TileLayer, useMap} from 'react-leaflet'
 import icon from '../../Assets/imgs/icon-location.svg'
 import {useEffect, useState} from "react";
 import Leaflet from "leaflet";
+import Recenter from "./Recenter/Recenter";
 
 const Map = (props) => {
 
@@ -15,7 +16,7 @@ const Map = (props) => {
 
     return (
         <MapContainer
-            center={position}
+            center={[51.505, -0.09]}
             zoom={15}
             scrollWheelZoom={true}
             zoomControl={false}
@@ -23,8 +24,9 @@ const Map = (props) => {
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={position} icon={newIcon}>
+            <Marker position={[props.lat, props.lng]} icon={newIcon}>
             </Marker>
+            <Recenter lat={props.lat} lng={props.lng}/>
         </MapContainer>
     )
 }

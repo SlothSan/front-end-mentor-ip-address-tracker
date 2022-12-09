@@ -13,6 +13,8 @@ function App() {
     const [location, setLocation] = useState('');
     const [timezone, setTimezone] = useState('');
     const [isp, setIsp] = useState('')
+    const [lat, setLat] = useState(0);
+    const [lng, setLng] = useState(0);
     const [coords, setCoords] = useState([51.505, -0.09]);
 
 
@@ -34,7 +36,8 @@ function App() {
             setLocation(`${apiData.location.city}, ${apiData.location.region} ${apiData.location.postalCode}`)
             setTimezone(`UTC ${apiData.location.timezone}`)
             setIsp(apiData.isp)
-            setCoords([apiData.location.lat, apiData.location.lng])
+            setLat(apiData.location.lat);
+            setLng(apiData.location.lng);
         }
     }, [apiData])
 
@@ -62,7 +65,7 @@ function App() {
                     </Container>
                 </Container>
             </Container>>
-            <Map coords={coords}/>
+            <Map lat={lat} lng={lng}/>
         </div>
     );
 }
