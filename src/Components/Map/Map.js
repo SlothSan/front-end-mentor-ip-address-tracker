@@ -9,9 +9,7 @@ const Map = (props) => {
 
     const newIcon = new Leaflet.Icon({
         iconUrl: (icon),
-        iconAnchor: [20, 0],
-        popupAnchor: [0, 0],
-        iconSize: [46, 56],
+        iconSize: [45, 55],
     })
 
 
@@ -19,7 +17,7 @@ const Map = (props) => {
         <MapContainer
             center={position}
             zoom={15}
-            scrollWheelZoom={false}
+            scrollWheelZoom={true}
             zoomControl={false}
             className={"map"}>
             <TileLayer
