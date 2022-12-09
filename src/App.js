@@ -2,15 +2,35 @@ import './App.css';
 import Container from "./Components/Container/Container";
 import HeaderTitle from "./Components/HeaderTitle/HeaderTitle";
 import SearchBar from "./Components/SearchBar/SearchBar";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import InfoText from "./Components/InfoText/InfoText";
 
 function App() {
     const [input, setInput] = useState('');
+    const [apiData, setApiData] = useState({})
     const [ipAddress, setIpAddress] = useState('');
     const [location, setLocation] = useState('');
     const [timezone, setTimezone] = useState('');
     const [isp, setIsp] = useState('')
+
+
+    const getInformationFromApi = async () => {
+        let results = await fetch('https://geo.ipify.org/api/v2/country,city?apiKey=at_qPzluB4842JdQoj6K5UcpjbhrZr49');
+        let resultsJson = await results.json();
+        setApiData(resultsJson);
+    }
+
+    useEffect(() => {
+        getInformationFromApi()
+            .catch(console.error);
+    }, [])
+
+    useEffect(() => {
+        setIpAddress(apiData.ip)
+        setLocation(`${apiData.location.city}, ${apiData.location.region} ${apiData.location.postalCode}`)
+        setTimezone(`UTC ${apiData.location.timezone}`)
+        setIsp(apiData.isp)
+    }, [apiData])
 
     return (
         <div className="App">
