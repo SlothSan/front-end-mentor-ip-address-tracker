@@ -4,6 +4,7 @@ import HeaderTitle from "./Components/HeaderTitle/HeaderTitle";
 import SearchBar from "./Components/SearchBar/SearchBar";
 import {useEffect, useState} from "react";
 import InfoText from "./Components/InfoText/InfoText";
+import Map from "./Components/Map/Map";
 
 function App() {
     const [input, setInput] = useState('');
@@ -26,10 +27,12 @@ function App() {
     }, [])
 
     useEffect(() => {
-        setIpAddress(apiData.ip)
-        setLocation(`${apiData.location.city}, ${apiData.location.region} ${apiData.location.postalCode}`)
-        setTimezone(`UTC ${apiData.location.timezone}`)
-        setIsp(apiData.isp)
+        if (Object.keys(apiData).length !== 0) {
+            setIpAddress(apiData.ip)
+            setLocation(`${apiData.location.city}, ${apiData.location.region} ${apiData.location.postalCode}`)
+            setTimezone(`UTC ${apiData.location.timezone}`)
+            setIsp(apiData.isp)
+        }
     }, [apiData])
 
     return (
@@ -56,6 +59,7 @@ function App() {
                     </Container>
                 </Container>
             </Container>
+            <Map id={"map"}/>
         </div>
     );
 }
