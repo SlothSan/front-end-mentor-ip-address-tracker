@@ -8,6 +8,7 @@ import Map from "./Components/Map/Map";
 
 function App() {
     const [input, setInput] = useState('');
+    const [runSearch, setRunSearch] = useState(false);
     const [apiData, setApiData] = useState({})
     const [ipAddress, setIpAddress] = useState('');
     const [location, setLocation] = useState('');
@@ -15,11 +16,10 @@ function App() {
     const [isp, setIsp] = useState('')
     const [lat, setLat] = useState(0);
     const [lng, setLng] = useState(0);
-    const [coords, setCoords] = useState([51.505, -0.09]);
 
 
-    const getInformationFromApi = async () => {
-        let results = await fetch('https://geo.ipify.org/api/v2/country,city?apiKey=at_qPzluB4842JdQoj6K5UcpjbhrZr49');
+    const getInformationFromApi = async (url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_qPzluB4842JdQoj6K5UcpjbhrZr49`) => {
+        let results = await fetch(url);
         let resultsJson = await results.json();
         setApiData(resultsJson);
     }
@@ -30,8 +30,24 @@ function App() {
     }, [])
 
     useEffect(() => {
+        //TODO needs error handling if it can't match a IP or a Domain :(
+        if (runSearch) {
+            const regexExpIp = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gi;
+            if (regexExpIp.test(input)) {
+                let url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_qPzluB4842JdQoj6K5UcpjbhrZr49&ipAddress=${input}`
+                getInformationFromApi(url)
+                    .catch(console.error);
+            } else {
+                let url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_qPzluB4842JdQoj6K5UcpjbhrZr49&domain=${input}`
+                getInformationFromApi(url)
+                    .catch(console.error);
+            }
+            setRunSearch(!runSearch)
+        }
+    }, [runSearch])
+
+    useEffect(() => {
         if (Object.keys(apiData).length !== 0) {
-            console.log(apiData)
             setIpAddress(apiData.ip)
             setLocation(`${apiData.location.city}, ${apiData.location.region} ${apiData.location.postalCode}`)
             setTimezone(`UTC ${apiData.location.timezone}`)
@@ -45,7 +61,7 @@ function App() {
         <div className="App">
             <Container className={"header-container"}>
                 <HeaderTitle title={"IP Address Tracker"} className={"header-title"}/>
-                <SearchBar/>
+                <SearchBar input={input} setInput={setInput} runSearch={runSearch} setRunSearch={setRunSearch}/>
                 <Container className={"information-container"}>
                     <Container className={"infotext-container"}>
                         <InfoText className={"infotext-header"} text={"IP ADDRESS"}/>

@@ -1,12 +1,9 @@
 import {MapContainer, Marker, Popup, TileLayer, useMap} from 'react-leaflet'
 import icon from '../../Assets/imgs/icon-location.svg'
-import {useEffect, useState} from "react";
 import Leaflet from "leaflet";
 import Recenter from "./Recenter/Recenter";
 
 const Map = (props) => {
-
-    const [position, setPosition] = useState([51.505, -0.09])
 
     const newIcon = new Leaflet.Icon({
         iconUrl: (icon),
