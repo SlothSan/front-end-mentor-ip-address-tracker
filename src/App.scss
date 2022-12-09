@@ -8,6 +8,7 @@
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
+  position: relative;
 
   .header-title {
     padding: 40px 0;
@@ -51,6 +52,46 @@
     .button-search:hover {
       background-color: $very-dark-gray;
       transition: all 0.2s;
+    }
+  }
+
+  .information-container {
+    margin: 195px auto 0 auto;
+    width: 327px;
+    height: 294px;
+    background-color: $text-white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    .infotext-container {
+      width: 279px;
+      height: 43px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .infotext-header {
+      font-weight: 700;
+      letter-spacing: 1.46px;
+      font-size: 0.625rem;
+      color: $dark-gray;
+    }
+
+    .infotext {
+      line-height: 24px;
+      letter-spacing: -0.18px;
+      font-size: 1.125rem;
+      color: $very-dark-gray;
     }
   }
 }
