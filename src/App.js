@@ -13,6 +13,7 @@ function App() {
     const [location, setLocation] = useState('');
     const [timezone, setTimezone] = useState('');
     const [isp, setIsp] = useState('')
+    const [coords, setCoords] = useState([51.505, -0.09]);
 
 
     const getInformationFromApi = async () => {
@@ -28,10 +29,12 @@ function App() {
 
     useEffect(() => {
         if (Object.keys(apiData).length !== 0) {
+            console.log(apiData)
             setIpAddress(apiData.ip)
             setLocation(`${apiData.location.city}, ${apiData.location.region} ${apiData.location.postalCode}`)
             setTimezone(`UTC ${apiData.location.timezone}`)
             setIsp(apiData.isp)
+            setCoords([apiData.location.lat, apiData.location.lng])
         }
     }, [apiData])
 
@@ -58,8 +61,8 @@ function App() {
                         <InfoText className={"infotext"} text={isp}/>
                     </Container>
                 </Container>
-            </Container>
-            <Map id={"map"}/>
+            </Container>>
+            <Map coords={coords}/>
         </div>
     );
 }
