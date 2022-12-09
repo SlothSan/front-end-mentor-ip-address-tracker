@@ -7,7 +7,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 
   .header-title {
     padding: 40px 0;
@@ -15,5 +15,43 @@
     font-weight: 500;
     font-size: 1.625rem;
     color: $text-white;
+    margin: 0 auto;
+  }
+
+  .form-search {
+    width: 327px;
+    height: 58px;
+    display: flex;
+    margin: 0 auto;
+
+    .input-search {
+      width: 327px;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      font-size: 1.125rem;
+      border: none;
+      color: $very-dark-gray;
+      padding: 0 15px;
+    }
+
+    .input-search:focus {
+      outline: none;
+    }
+
+    .button-search {
+      border: none;
+      height: 58px;
+      width: 58px;
+      background-color: $background-black;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      transition: all 0.2s;
+    }
+
+    .button-search:hover {
+      background-color: $very-dark-gray;
+      transition: all 0.2s;
+    }
   }
 }
+
