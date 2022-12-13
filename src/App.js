@@ -19,9 +19,12 @@ function App() {
     const [lng, setLng] = useState(0);
 
 
-    const getInformationFromApi = async (url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_qPzluB4842JdQoj6K5UcpjbhrZr49`) => {
+    const getInformationFromApi = async (url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_ob7fi4gKYTlDMH4Gvp3rjrUROr7J6`) => {
         let results = await fetch(url);
         let resultsJson = await results.json();
+        if (resultsJson.code === 400 || resultsJson.code === 422) {
+            getInformationFromApi();
+        }
         setApiData(resultsJson);
     }
 
@@ -35,13 +38,13 @@ function App() {
         if (runSearch) {
             const regexExpIp = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gi;
             if (regexExpIp.test(input)) {
-                let url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_qPzluB4842JdQoj6K5UcpjbhrZr49&ipAddress=${input}`
+                let url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_ob7fi4gKYTlDMH4Gvp3rjrUROr7J6&ipAddress=${input}`
                 getInformationFromApi(url)
-                    .catch(console.error);
+                    .catch();
             } else {
-                let url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_qPzluB4842JdQoj6K5UcpjbhrZr49&domain=${input}`
+                let url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_ob7fi4gKYTlDMH4Gvp3rjrUROr7J6&domain=${input}`
                 getInformationFromApi(url)
-                    .catch(console.error);
+                    .catch();
             }
             setRunSearch(!runSearch)
         }
