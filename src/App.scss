@@ -114,6 +114,26 @@
       width: 1110px;
       height: 161px;
       flex-direction: row;
+      padding: 30px 20px;
+      align-items: center;
+
+
+      .infotext-container {
+        width: 213px;
+        align-items: flex-start;
+        justify-content: center;
+        height: 88px;
+
+        .infotext {
+          display: flex;
+          font-size: 1.625rem;
+          width: 213px;
+          min-height: 61px;
+          align-items: center;
+          border-right: 1px solid $dark-gray;
+        }
+
+      }
     }
   }
 }
