@@ -62,7 +62,7 @@ function App() {
     }, [apiData])
 
     return (
-        <div className="App">
+        <section className="App">
             <Container className={"header-container"}>
                 <HeaderTitle title={"IP Address Tracker"} className={"header-title"}/>
                 <SearchBar input={input} setInput={setInput} runSearch={runSearch} setRunSearch={setRunSearch}/>
@@ -86,7 +86,7 @@ function App() {
                 </Container>
             </Container>>
             <Map lat={lat} lng={lng}/>
-        </div>
+        </section>
     );
 }
 
