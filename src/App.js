@@ -78,7 +78,7 @@ function App() {
                     </Container>
                     <Container className={"infotext-container"}>
                         <InfoText className={"infotext-header"} text={"ISP"}/>
-                        <InfoText className={"infotext"} text={isp}/>
+                        <InfoText className={"infotext last-infotext"} text={isp}/>
                     </Container>
                 </Container>
             </Container>>
