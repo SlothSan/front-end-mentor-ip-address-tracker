@@ -96,6 +96,26 @@
       color: $very-dark-gray;
     }
   }
+
+  @media (min-width: 1140px) {
+    .header-title {
+      font-size: 2rem;
+    }
+
+    .form-search {
+      width: 555px;
+
+      .input-search {
+        width: 497px;
+      }
+    }
+    .information-container {
+      margin: 220px auto 0 auto;
+      width: 1110px;
+      height: 161px;
+      flex-direction: row;
+    }
+  }
 }
 
 .map {
@@ -103,4 +123,6 @@
   height: 551px;
   z-index: 1;
 }
+
+
 

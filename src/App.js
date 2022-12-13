@@ -2,9 +2,10 @@ import './App.css';
 import Container from "./Components/Container/Container";
 import HeaderTitle from "./Components/HeaderTitle/HeaderTitle";
 import SearchBar from "./Components/SearchBar/SearchBar";
-import {useEffect, useState} from "react";
 import InfoText from "./Components/InfoText/InfoText";
 import Map from "./Components/Map/Map";
+import {useEffect, useState} from "react";
+
 
 function App() {
     const [input, setInput] = useState('');
