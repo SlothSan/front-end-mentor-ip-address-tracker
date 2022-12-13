@@ -96,6 +96,50 @@
       color: $very-dark-gray;
     }
   }
+
+  @media (min-width: 1140px) {
+    .header-title {
+      font-size: 2rem;
+    }
+
+    .form-search {
+      width: 555px;
+
+      .input-search {
+        width: 497px;
+      }
+    }
+    .information-container {
+      margin: 220px auto 0 auto;
+      width: 1110px;
+      height: 161px;
+      flex-direction: row;
+      padding: 30px 20px;
+      align-items: center;
+
+
+      .infotext-container {
+        width: 213px;
+        align-items: flex-start;
+        justify-content: center;
+        height: 88px;
+
+        .infotext {
+          margin-top: 10px;
+          display: flex;
+          font-size: 1.625rem;
+          width: 213px;
+          min-height: 61px;
+          align-items: center;
+          border-right: 1px solid $dark-gray;
+        }
+
+        .last-infotext {
+          border: none;
+        }
+      }
+    }
+  }
 }
 
 .map {
@@ -103,4 +147,12 @@
   height: 551px;
   z-index: 1;
 }
+
+@media (min-width: 1140px) {
+  .map {
+    height: calc(100vh - 294px);
+  }
+}
+
+
 
